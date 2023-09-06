@@ -16,9 +16,9 @@ public class Post {
     private String description;
     @Column(nullable = false)
     private String content;
-    @Column(nullable = false)
+    @Column
     private Date publishedDate;
-    @Column(nullable = false)
+    @Column
     private Date lastEditedDate;
 
     public Post() {}
