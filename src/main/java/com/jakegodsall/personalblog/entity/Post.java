@@ -3,6 +3,8 @@ package com.jakegodsall.personalblog.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Posts", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
@@ -20,6 +22,9 @@ public class Post {
     private Date publishedDate;
     @Column
     private Date lastEditedDate;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Comment> comments = new HashSet<>();
 
     public Post() {}
 

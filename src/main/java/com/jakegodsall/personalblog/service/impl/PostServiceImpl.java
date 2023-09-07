@@ -37,14 +37,12 @@ public class PostServiceImpl implements PostService {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         // Return a Page of posts given the pageable config
         Page<Post> posts = postRepository.findAll(pageable);
-        // get content for page object
-        List<PostDto> listOfPosts = posts
+        // get and return content for page object
+        return posts
                 .getContent()
                 .stream()
                 .map(this::mapToDTO)
                 .toList();
-
-        return listOfPosts;
     }
 
     @Override
