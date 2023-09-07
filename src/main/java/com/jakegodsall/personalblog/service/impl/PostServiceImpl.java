@@ -6,10 +6,11 @@ import com.jakegodsall.personalblog.payload.PostDto;
 import com.jakegodsall.personalblog.repository.PostRepository;
 import com.jakegodsall.personalblog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -31,12 +32,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> getAllPosts() {
-        List<Post> posts = postRepository.findAll();
-
-        return posts.stream()
+    public List<PostDto> getAllPosts(int pageNo, int pageSize) {
+        // Create Pageable instance with provided values
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        // Return a Page of posts given the pageable config
+        Page<Post> posts = postRepository.findAll(pageable);
+        // get content for page object
+        List<PostDto> listOfPosts = posts
+                .getContent()
+                .stream()
                 .map(this::mapToDTO)
                 .toList();
+
+        return listOfPosts;
     }
 
     @Override
