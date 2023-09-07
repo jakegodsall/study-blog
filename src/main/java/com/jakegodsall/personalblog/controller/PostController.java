@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/posts")
 public class PostController {
 
     private PostService postService;
@@ -17,20 +18,34 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping(path="/api/posts")
+    @GetMapping
     public ResponseEntity<List<PostDto>> getPosts() {
         List<PostDto> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
     }
 
-    @PostMapping(path="/api/posts")
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {
-        return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
-    }
-
-    @GetMapping(path="/api/posts/{id}")
+    @GetMapping(path="/{id}")
     public ResponseEntity<PostDto> getPost(@PathVariable long id) {
         PostDto singlePost = postService.getSinglePost(id);
         return ResponseEntity.ok(singlePost);
     }
+
+    @PostMapping
+    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {
+        PostDto postResponse = postService.createPost(postDto);
+        return new ResponseEntity<>(postResponse, HttpStatus.CREATED);
+    }
+
+    @PutMapping(path="/{id}")
+    public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto, @PathVariable long id) {
+        PostDto postResponse = postService.updatePost(postDto, id);
+        return ResponseEntity.ok(postResponse);
+    }
+
+    @DeleteMapping(path="/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable long id) {
+        postService.deletePostById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

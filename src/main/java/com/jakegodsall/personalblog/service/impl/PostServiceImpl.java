@@ -23,13 +23,9 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDto createPost(PostDto postDto) {
         // convert the Dto to an entity
-        Post post = new Post();
-        post.setTitle(postDto.getTitle());
-        post.setDescription(postDto.getDescription());
-        post.setContent(postDto.getContent());
-
+        Post post = mapToEntity(postDto);
+        // save the post to the database
         Post newPost = postRepository.save(post);
-
         // convert the entity to Dto
         return mapToDTO(newPost);
     }
@@ -52,6 +48,37 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    @Override
+    public PostDto updatePost(PostDto postDto, long id) {
+        // get post by id
+        Post post = postRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
+
+        // update entity
+        post.setTitle(postDto.getTitle());
+        post.setDescription(postDto.getDescription());
+        post.setContent(postDto.getContent());
+
+        // save the entity to the database
+        postRepository.save(post);
+
+        // map to DTO
+        return mapToDTO(post);
+
+    }
+
+    @Override
+    public void deletePostById(long id) {
+        // get post by id
+        Post post = postRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
+
+        // delete the post frm the database.
+        postRepository.delete(post);
+    }
+
     private PostDto mapToDTO(Post post) {
         return new PostDto(
                 post.getId(),
@@ -59,5 +86,14 @@ public class PostServiceImpl implements PostService {
                 post.getDescription(),
                 post.getContent()
         );
+    }
+
+    private Post mapToEntity(PostDto postDto) {
+        Post post = new Post();
+        post.setTitle(postDto.getTitle());
+        post.setDescription(postDto.getDescription());
+        post.setContent(postDto.getContent());
+
+        return post;
     }
 }
