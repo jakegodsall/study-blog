@@ -9,6 +9,8 @@ import com.jakegodsall.personalblog.repository.PostRepository;
 import com.jakegodsall.personalblog.service.CommentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -35,6 +37,16 @@ public class CommentServiceImpl implements CommentService {
         Comment savedComment = commentRepository.save(comment);
         // map and return the saved Comment to CommentDto
         return mapToDto(savedComment);
+    }
+
+    @Override
+    public List<CommentDto> getAllCommentsByPostId(long postId) {
+        // retrieve comments by postId
+        List<Comment> comments = commentRepository.findByPostId(postId);
+        // map List<Comment> to List<CommentDto>
+        return comments.stream()
+                .map(this::mapToDto)
+                .toList();
     }
 
     private Comment mapToEntity(CommentDto commentDto) {
