@@ -6,6 +6,15 @@ public class PostDto {
     private String description;
     private String content;
 
+    public PostDto() {}
+
+    public PostDto(long id, String title, String description, String content) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+    }
+
     public long getId() {
         return id;
     }
@@ -35,15 +44,6 @@ public class PostDto {
     }
 
     public void setContent(String content) {
-        this.content = content;
-    }
-
-    public PostDto() {}
-
-    public PostDto(long id, String title, String description, String content) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
         this.content = content;
     }
 
