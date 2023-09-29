@@ -1,7 +1,7 @@
 package com.jakegodsall.personalblog.controller;
 
-import com.jakegodsall.personalblog.payload.LoginDto;
-import com.jakegodsall.personalblog.payload.RegisterDto;
+import com.jakegodsall.personalblog.payload.auth.LoginDto;
+import com.jakegodsall.personalblog.payload.auth.RegisterDto;
 import com.jakegodsall.personalblog.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +28,6 @@ public class AuthController {
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         String response = authService.register(registerDto);
-        return new ResponseEntity<>(response, HttpStatus.CREATED)
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

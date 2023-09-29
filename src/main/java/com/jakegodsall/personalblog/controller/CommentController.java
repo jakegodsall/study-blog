@@ -1,7 +1,5 @@
 package com.jakegodsall.personalblog.controller;
 
-import com.jakegodsall.personalblog.entity.Comment;
-import com.jakegodsall.personalblog.payload.CommentDto;
 import com.jakegodsall.personalblog.service.CommentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

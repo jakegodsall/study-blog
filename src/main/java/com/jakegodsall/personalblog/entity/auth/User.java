@@ -1,4 +1,4 @@
-package com.jakegodsall.personalblog.entity;
+package com.jakegodsall.personalblog.entity.auth;
 
 import jakarta.persistence.*;
 

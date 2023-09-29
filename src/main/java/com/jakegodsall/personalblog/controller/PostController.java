@@ -1,6 +1,6 @@
 package com.jakegodsall.personalblog.controller;
 
-import com.jakegodsall.personalblog.payload.PostDto;
+import com.jakegodsall.personalblog.payload.posts.PostDto;
 import com.jakegodsall.personalblog.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

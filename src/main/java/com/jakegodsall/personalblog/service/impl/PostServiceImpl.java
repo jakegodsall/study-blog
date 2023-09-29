@@ -1,11 +1,10 @@
 package com.jakegodsall.personalblog.service.impl;
 
-import com.jakegodsall.personalblog.entity.Post;
+import com.jakegodsall.personalblog.entity.posts.Post;
 import com.jakegodsall.personalblog.exception.ResourceNotFoundException;
-import com.jakegodsall.personalblog.payload.PostDto;
-import com.jakegodsall.personalblog.repository.PostRepository;
+import com.jakegodsall.personalblog.payload.posts.PostDto;
+import com.jakegodsall.personalblog.repository.posts.PostRepository;
 import com.jakegodsall.personalblog.service.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

@@ -1,7 +1,5 @@
 package com.jakegodsall.personalblog.service;
 
-import com.jakegodsall.personalblog.payload.CommentDto;
-
 import java.util.List;
 
 public interface CommentService {

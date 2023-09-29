@@ -1,13 +1,12 @@
 package com.jakegodsall.personalblog.service.impl;
 
-import com.jakegodsall.personalblog.entity.Role;
-import com.jakegodsall.personalblog.entity.User;
+import com.jakegodsall.personalblog.entity.auth.Role;
+import com.jakegodsall.personalblog.entity.auth.User;
 import com.jakegodsall.personalblog.exception.BlogAPIException;
-import com.jakegodsall.personalblog.exception.ResourceNotFoundException;
-import com.jakegodsall.personalblog.payload.LoginDto;
-import com.jakegodsall.personalblog.payload.RegisterDto;
-import com.jakegodsall.personalblog.repository.RoleRepository;
-import com.jakegodsall.personalblog.repository.UserRepository;
+import com.jakegodsall.personalblog.payload.auth.LoginDto;
+import com.jakegodsall.personalblog.payload.auth.RegisterDto;
+import com.jakegodsall.personalblog.repository.auth.RoleRepository;
+import com.jakegodsall.personalblog.repository.auth.UserRepository;
 import com.jakegodsall.personalblog.service.AuthService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

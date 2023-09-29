@@ -1,4 +1,4 @@
-package com.jakegodsall.personalblog.payload;
+package com.jakegodsall.personalblog.payload.auth;
 
 public class LoginDto {
     private String usernameOrEmail;

@@ -1,6 +1,6 @@
 package com.jakegodsall.personalblog.service;
 
-import com.jakegodsall.personalblog.payload.PostDto;
+import com.jakegodsall.personalblog.payload.posts.PostDto;
 
 import java.util.List;
 

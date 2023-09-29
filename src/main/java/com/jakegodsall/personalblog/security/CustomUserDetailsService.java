@@ -1,7 +1,7 @@
 package com.jakegodsall.personalblog.security;
 
-import com.jakegodsall.personalblog.entity.User;
-import com.jakegodsall.personalblog.repository.UserRepository;
+import com.jakegodsall.personalblog.entity.auth.User;
+import com.jakegodsall.personalblog.repository.auth.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

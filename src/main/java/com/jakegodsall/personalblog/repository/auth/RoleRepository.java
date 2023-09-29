@@ -1,6 +1,6 @@
-package com.jakegodsall.personalblog.repository;
+package com.jakegodsall.personalblog.repository.auth;
 
-import com.jakegodsall.personalblog.entity.Role;
+import com.jakegodsall.personalblog.entity.auth.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,7 +1,8 @@
-package com.jakegodsall.personalblog.payload;
+package com.jakegodsall.personalblog.payload.posts;
 
 import jakarta.validation.constraints.*;
 
+import java.util.Date;
 import java.util.Set;
 
 public class PostDto {
@@ -14,9 +15,14 @@ public class PostDto {
     private String description;
     @NotEmpty
     @Size(min = 100, message = "Post content should have at least 100 characters")
-    private String content;
+    private String blogPost;
 
-    private Set<CommentDto> comments;
+    private Date publishedDate;
+    private Date lastEditedDate;
+    private String slug;
+    private String youtubeURL;
+    private String category;
+
 
     public PostDto() {}
 
